@@ -25,7 +25,10 @@ def main(args):
         raise FileExistsError('Refusing to overwrite diagnostic output: ' + str(args.output))
     rows = {r['sample_id']: r for r in json.loads(args.alignment.read_text(encoding='utf-8'))}
     ids = [x.strip() for x in args.ids_file.read_text(encoding='utf-8').splitlines() if x.strip()]
-    if len(ids) != len(set(ids)) or not ids or not set(ids) <= set(rows):
+    full_ids = set(args.full_audio_ids)
+    if args.full_audio_ids_file:
+        full_ids.update(x.strip() for x in args.full_audio_ids_file.read_text(encoding='utf-8').splitlines() if x.strip())
+    if len(ids) != len(set(ids)) or not ids or not set(ids) <= set(rows) or not full_ids <= set(ids):
         raise ValueError('duplicate or unknown sample IDs')
     processor = WhisperProcessor.from_pretrained(str(args.model_dir), local_files_only=True)
     model = WhisperForConditionalGeneration.from_pretrained(str(args.model_dir),
@@ -40,7 +43,7 @@ def main(args):
         folder = source_run.parent / 'corpus' / row['speaker']
         cropped = folder / (row['base'] + '.wav')
         paths = [('edited_audio', cropped)]
-        if sid in args.full_audio_ids:
+        if sid in full_ids:
             paths.append(('full_audio', args.media_dir / sid / 'full-16k-mono.wav'))
         for kind, path in paths:
             waveform, sr = sf.read(path, dtype='float32')
@@ -72,5 +75,6 @@ if __name__ == '__main__':
     parser.add_argument('--model-dir', type=Path, required=True)
     parser.add_argument('--ids-file', type=Path, required=True)
     parser.add_argument('--full-audio-ids', nargs='*', default=[])
+    parser.add_argument('--full-audio-ids-file', type=Path, help='one sample ID per line; use for IDs beginning with -')
     parser.add_argument('--output', type=Path, required=True)
     main(parser.parse_args())

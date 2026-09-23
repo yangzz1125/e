@@ -10,7 +10,7 @@
 | `combine_alignments.py` | 初次100条JSON与六条独立重试JSON | `alignment-effective.json`（保留重试溯源） | 83条自动通过、17条待复核、0缺失；仍需人工验收 |
 | `classify_alignment_reviews.py` | `alignment-effective.json` | 本地分类JSON及17条异常分类报告 | P0内容不等价1条、P1波形问题4条、P2分词口径差异12条；不自动改通过 |
 | `build_review_cards.py` | 本地对齐/分类JSON和原片视频目录 | 17份只读审核JSON及`人工审核清单.md` | 核对每条原片SHA-256和样本ID；审核结论由人工填写，不修改原始记录 |
-| `whisper_asr_check.py` | 候选异常样本的选中音频、冻结Whisper权重 | 本地ASR诊断JSON | 仅作语音识别对照，不能替换题面原文或MFA逐词边界；见`reports/problem1-alignment/Whisper语音识别试验.md` |
+| `whisper_asr_check.py` | 候选异常样本的选中音频、冻结Whisper权重 | 本地ASR诊断JSON | 已测试全部17条及2条完整音轨；仅作识别对照，不能替换题面原文或MFA逐词边界；见`reports/problem1-alignment/Whisper17条异常诊断.md` |
 
 ## 运行（服务器）
 
