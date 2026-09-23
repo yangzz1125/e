@@ -14,13 +14,13 @@
 环境：`/hy-tmp/E/.venv/bin/python`（需`openpyxl`）、FFmpeg/ffprobe；输入目录`/hy-tmp/mathmodel/E/input/`。所有派生文件写到`/hy-tmp/E/problem1/media/`，不修改附件1。实际命令：
 
 ```bash
-cd /hy-tmp/E
-.venv/bin/python code/problem1/preprocess_media.py \
+cd /hy-tmp/E-collab
+/hy-tmp/E/.venv/bin/python code/problem1/preprocess_media.py \
   --input /hy-tmp/mathmodel/E/input \
   --output /hy-tmp/E/problem1/media
-.venv/bin/python code/problem1/map_transcripts.py \
+/hy-tmp/E/.venv/bin/python code/problem1/map_transcripts.py \
   --media-dir /hy-tmp/E/problem1/media
-.venv/bin/python code/problem1/align_words.py \
+/hy-tmp/E/.venv/bin/python code/problem1/align_words.py \
   --media-dir /hy-tmp/E/problem1/media \
   --output /hy-tmp/E/problem1/alignment/all --jobs 4
 ```
@@ -28,11 +28,11 @@ cd /hy-tmp/E
 若只试跑3条，加`--ids-file /hy-tmp/E/problem1/media/pilot-ids.txt`，并把`--output`设为独立的`/hy-tmp/E/problem1/alignment/pilot`。初次六条无TextGrid后，按`reports/problem1-alignment/missing-ids.txt`在**独立目录**重跑：
 
 ```bash
-.venv/bin/python code/problem1/align_words.py \
+/hy-tmp/E/.venv/bin/python code/problem1/align_words.py \
   --ids-file /hy-tmp/E/problem1/media/missing-ids.txt \
   --output /hy-tmp/E/problem1/alignment/retry_beam100 \
   --jobs 1 --beam 100 --retry-beam 400
-.venv/bin/python code/problem1/combine_alignments.py \
+/hy-tmp/E/.venv/bin/python code/problem1/combine_alignments.py \
   --original /hy-tmp/E/problem1/alignment/all/alignment.json \
   --retry /hy-tmp/E/problem1/alignment/retry_beam100/alignment.json \
   --output /hy-tmp/E/problem1/alignment/alignment-effective.json
