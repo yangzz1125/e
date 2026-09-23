@@ -42,6 +42,7 @@ python -m venv --without-pip --system-site-packages /hy-tmp/E/.venv
 | MFA 3.3.10、CPU Kaldi | `/hy-tmp/E/tools/mfa` |
 | MFA 英文声学模型、词典 v3.0.0 | `/hy-tmp/E/models/mfa/english_us_arpa.zip`、`english_us_arpa.dict` |
 | BERT base uncased | `/hy-tmp/E/models/bert-base-uncased` |
+| Whisper base.en（第一问异常ASR诊断，不是正式文本标签） | `/hy-tmp/E/models/whisper-base.en`；修订号`911407f4214e0e1d82085af863093ec0b66f9cd6`，经`HF_ENDPOINT=https://hf-mirror.com`获取，10个文件SHA-256与官方源下载一致；权重不纳入GitHub/提交包 |
 | MediaPipe 人脸模型 | `/hy-tmp/E/models/mediapipe/face_landmarker.task` |
 
 `activate-server.sh` 定义 `FeatureExtraction`、`mfa` 函数，分别使用各自工具环境；运行 Python 时仍使用项目 `.venv`。调用 MFA 不会把主环境切换成 Conda。英文对齐命令示例：
