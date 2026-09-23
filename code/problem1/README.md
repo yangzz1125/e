@@ -9,6 +9,7 @@
 | `align_words.py` | 只读原片、原文、候选音频区间、完整WAV | MFA TextGrid、`alignment.json`、状态/波形核验 | 初次100条：79通过、15待复核、6条无TextGrid；六条独立加大束宽后4通过、2待复核 |
 | `combine_alignments.py` | 初次100条JSON与六条独立重试JSON | `alignment-effective.json`（保留重试溯源） | 83条自动通过、17条待复核、0缺失；仍需人工验收 |
 | `classify_alignment_reviews.py` | `alignment-effective.json` | 本地分类JSON及17条异常分类报告 | P0内容不等价1条、P1波形问题4条、P2分词口径差异12条；不自动改通过 |
+| `build_review_cards.py` | 本地对齐/分类JSON和原片视频目录 | 17份只读审核JSON及`人工审核清单.md` | 核对每条原片SHA-256和样本ID；审核结论由人工填写，不修改原始记录 |
 
 ## 运行（服务器）
 
