@@ -1,0 +1,24 @@
+/.venv/
+/.download-cache/
+/models/
+# Copied upstream tools; retain their source separately.
+/skills/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+*.exit
+*.tgz
+*.zip
+*.pkl
+*.mp4
+*.wav
+*.npz
+# Provided contest statement, not authored in this workspace.
+/*.docx
+# Generated contest data/evidence; retain locally and on the server, not on GitHub.
+/reports/**/*.json
+/reports/**/*.csv
+/reports/**/*.txt
+/reports/**/*.log
+/reports/**/*.exit
