@@ -4,7 +4,7 @@
 
 ## 当前进度
 
-第一问：100条全片媒体预处理完成；100条编辑列表候选区间已记录；MFA初次100条对齐后，对6条无TextGrid样本做隔离束宽重试，带溯源的结果为**83条自动检查通过、17条待复核**。自动通过不等于人工确认词边界。完整视频的三模态特征、统一时序、100条特征验收**尚未完成**。细节见 [`code/problem1/README.md`](code/problem1/README.md) 和 [`reports/problem1-alignment/逐词对齐记录.md`](reports/problem1-alignment/逐词对齐记录.md)。
+第一问：100条全片媒体预处理完成；100条编辑列表候选区间已记录；MFA初次100条对齐后，对6条无TextGrid样本做隔离束宽重试，带溯源的结果为**83条自动检查通过、17条待复核**。自动通过不等于人工确认词边界。完整视频的三模态特征、统一时序、100条特征验收**尚未完成**。17条已分类为1条内容不等价、4条波形问题和12条分词口径差异；分类不是人工验收。细节见 [`code/problem1/README.md`](code/problem1/README.md)、[`逐词对齐记录`](reports/problem1-alignment/逐词对齐记录.md) 与 [`17条异常分类`](reports/problem1-alignment/17条异常分类.md)。
 
 ## 服务器协作
 
